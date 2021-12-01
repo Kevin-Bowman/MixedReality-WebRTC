@@ -31,7 +31,21 @@ For clarity we will create a new game object and add a [`WebcamSource`](xref:Mic
 - In the **Inspector** window, rename the newly-created game object to something memorable like "LocalVideoPlayer".
 - Press the **Add Component** button at the bottom of the window, and select **MixedReality-WebRTC** > **Webcam Source**.
 
-![Create a webcam source](helloworld-unity-8.png)
+![Create a webcam source](https://user-images.githubusercontent.com/71731387/144293596-491190ba-a14c-4e8d-93e8-0ab5d488c485.png)
+
+For some releases you need to cause the Start Rendering event to occur by adding the following to the "Video Stream Started (IVideoSource)".
+
+- In the **Video Stream Started** window, select **+**.
+- Set the action category to **Runtime** or **Editor And Runtime**.
+- Set the action function to **VideoRenderer** and select **StartRendering**.
+- Set the action object to **Scene** type **LocalVideoPlayer**.
+
+The "Video Stream Stopped" section is optional as the StopRendering is called by default. However, for uniforimty, you should set the "Video Stream Stopped" action as well.
+
+- In the **Video Stream Stopped** window, select **+**.
+- Set the action category to **Runtime** or **Editor And Runtime**.
+- Set the action function to **VideoRenderer** and select **StopRendering**.
+- Set the action object to **Scene** type **LocalVideoPlayer**.
 
 The webcam source component contains several interesting properties. We detail these properties below for reference, but for now we can leave all of them to their default values.
 
@@ -131,7 +145,7 @@ After that, set the component properties as follow:
 
 This should result in a setup looking like this:
 
-![Configuring the media player to render the webcam source](helloworld-unity-10.png)
+![Configuring the media player to render the webcam source](https://user-images.githubusercontent.com/71731387/144294767-0743d8f0-ce92-4261-a7cc-54cb644cf534.png)
 
 And the **Game** view should display a black rectangle, which materializes the quad mesh:
 
